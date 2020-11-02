@@ -30,17 +30,46 @@
 
 # The maximum possible profit.
 
+def find_diff(prices):
+    diff_list = []
+
+    for x in prices:
+        for y in prices:
+            diff_list.append(x-y)
+    return sorted(diff_list, reverse=True)
+
 def buyAndSellStock(prices):
 
     # Check to make sure prices do rise at some point during our array, if not return 0
     #need to find the two indicies where the difference between them is highest
     # loop over array subtracting
 
-    for i in range(len(prices) -1):
-        if prices[i+1] > prices[i]:
-            return 'there is a solution'
+    # this is my starting point
+    # for i in range(len(prices) -1):
+    #     if prices[i+1] > prices[i]:
+    #         return 'there is a solution'
 
-    return 'there is no solution'
+    # return 0
 
-print(buyAndSellStock([20, 15, 2, 0, 8, 1]))
-# print(buyAndSellStock([20, 15, 2, 20]))
+    prices_len = len(prices)
+    biggest_diff = prices[1] - prices[0]
+    smallest_elm = prices[0]
+
+    for i in range(1, prices_len):
+        if (prices[i] - smallest_elm):
+            biggest_diff = prices[i] - smallest_elm
+
+        if (prices[i] < smallest_elm):
+            smallest_elm = prices[i]
+
+    if (biggest_diff < 1):
+        return 0
+
+    return biggest_diff
+    
+
+# print(buyAndSellStock([20, 15, 2, 1, 10]))
+prices = [20, 15, 2, 0]
+# prices_len = len(prices)
+print(buyAndSellStock(prices))
+# print(find_diff([20, 15, 2, 20]))
