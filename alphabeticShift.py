@@ -24,13 +24,8 @@ def alphabeticShift(inputString):
     input_str[:0]=inputString
     inc_list = []
 
-
-
     for i in input_str:
         inc_list.append(chr(ord(i) + 1))
-
-    
-            
 
     inc_str = ''.join(inc_list)
     return inc_str.replace('{', 'a')
